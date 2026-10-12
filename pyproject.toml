@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphrag-hybrid-engine"
+version = "0.1.0"
+description = "Production GraphRAG and self-corrective hybrid retrieval engine with continuous evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+    "qdrant-client>=1.12",
+    "neo4j>=5.25",
+    "celery[redis]>=5.4",
+    "redis>=5.0",
+    "langgraph>=0.2.60",
+    "langchain-core>=0.3",
+    "langchain-ollama>=0.2",
+    "langchain-openai>=0.2",
+    "instructor>=1.6",
+    "openai>=1.45",
+    "tenacity>=8.5",
+    "httpx>=0.27",
+    "pypdf>=4.3",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+heavy = ["FlagEmbedding>=1.2.11"]
+eval = ["ragas>=0.2.6", "datasets>=2.21", "deepeval>=1.4", "langchain-community>=0.3,<0.4"]
+ui = ["streamlit>=1.38", "pyvis>=0.3.2"]
+websearch = ["ddgs>=9.0"]
+dev = ["pytest>=8.3", "ruff>=0.6"]
+
+[tool.setuptools.packages.find]
+include = ["app*", "evaluation*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+
+[tool.pytest.ini_options]
+markers = ["heavy: tests requiring FlagEmbedding / torch"]
+addopts = "-m 'not heavy'"
