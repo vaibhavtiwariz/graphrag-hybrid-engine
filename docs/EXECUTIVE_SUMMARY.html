@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GraphRAG Hybrid Engine — Executive Summary</title>
+<style>
+:root { --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --accent:#7c3aed; --accent2:#1e3a8a; }
+* { box-sizing:border-box; margin:0; }
+body { font:10.5px/1.45 -apple-system,'Segoe UI',Roboto,sans-serif; color:var(--ink);
+       background:#f1f5f9; padding:18px; }
+.page { width:210mm; min-height:296mm; margin:0 auto; background:#fff; padding:11mm 12mm;
+        box-shadow:0 2px 18px rgba(15,23,42,.18); }
+.hero { background:linear-gradient(120deg,#0f172a,#1e3a8a 55%,#7c3aed); border-radius:8px;
+        padding:14px 18px; color:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.hero h1 { font-size:19px; letter-spacing:.2px; }
+.hero p { font-size:10px; color:#c7d2fe; margin-top:4px; max-width:640px; }
+.hero .meta { margin-top:7px; font-size:8.5px; color:#a5b4fc; }
+h2 { font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--accent2);
+     border-bottom:2px solid var(--accent); padding-bottom:3px; margin:13px 0 7px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:0 22px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+ul { padding-left:15px; } li { margin:2.5px 0; }
+b, strong { color:#0b1220; }
+.kpis { display:grid; grid-template-columns:repeat(6,1fr); gap:7px; margin:8px 0 2px; }
+.kpi { border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px;
+       padding:7px 8px; text-align:center; }
+.kpi .v { font-size:16px; font-weight:700; color:var(--accent2); }
+.kpi .l { font-size:7.6px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.flow { display:flex; gap:5px; margin:8px 0 4px; flex-wrap:wrap; }
+.stage { flex:1 1 0; border:1px solid var(--line); border-radius:6px; padding:6px 7px;
+         background:#f8fafc; min-width:96px; }
+.stage .t { font-weight:700; font-size:9px; color:var(--accent2); }
+.stage .d { font-size:8.4px; color:var(--muted); margin-top:2px; }
+.arrow { align-self:center; color:var(--accent); font-weight:700; }
+table { width:100%; border-collapse:collapse; font-size:9.3px; }
+th { background:#eef2ff; text-align:left; color:#1e293b; }
+th, td { border:1px solid var(--line); padding:3.5px 6px; }
+.chips { display:flex; flex-wrap:wrap; gap:5px; }
+.chip { border:1px solid var(--line); background:#f8fafc; border-radius:999px;
+        padding:2.5px 9px; font-size:8.8px; color:#334155; }
+.stack { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+.stack span { background:#eef2ff; color:#3730a3; border-radius:4px; padding:2px 7px;
+              font-size:8.4px; font-weight:600; }
+.foot { margin-top:10px; padding-top:7px; border-top:1px solid var(--line);
+        display:flex; justify-content:space-between; font-size:8.3px; color:var(--muted); }
+@media print {
+  body { background:#fff; padding:0; }
+  .page { box-shadow:none; width:auto; min-height:auto; margin:0;
+          -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @page { size:A4; margin:9mm; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <h1>GraphRAG &amp; Self-Corrective Hybrid Retrieval Engine</h1>
+    <p>Production-style retrieval platform uniting a Neo4j knowledge graph, Qdrant dense+sparse
+    vectors, RRF fusion, cross-encoder reranking and a self-corrective CRAG loop (LangGraph) with
+    continuous Ragas/DeepEval evaluation — built end-to-end on free, self-hostable resources.</p>
+    <div class="meta">Vaibhav Tiwari · August 2026 · Python 3.11 · FastAPI · Streamlit · Celery/Redis · Docker</div>
+  </div>
+
+  <h2>The problem with vector-only RAG — and the fix</h2>
+  <div class="grid2">
+    <ul>
+      <li><b>No entity awareness</b> — multi-hop answers ("which supplier caused incident X?")
+      span 3+ documents that vector search retrieves in isolation.</li>
+      <li><b>Keyword blindness</b> — SKUs, incident IDs and policy codes defeat semantic
+      embeddings.</li>
+      <li><b>Blind generation</b> — irrelevant context silently poisons answers; no measurement
+      of retrieval quality.</li>
+    </ul>
+    <ul>
+      <li><b>Four fused signals:</b> dense ANN + sparse lexical + 2-hop graph traversal +
+      cross-encoder rerank, merged with Reciprocal Rank Fusion.</li>
+      <li><b>Self-correction:</b> every retrieval is graded; weak evidence triggers query
+      rewriting, then a keyless DuckDuckGo fallback.</li>
+      <li><b>Continuous evaluation:</b> Ragas faithfulness / precision / recall over a golden
+      multi-hop benchmark, CI-ready.</li>
+    </ul>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="flow">
+    <div class="stage"><div class="t">Ingest</div><div class="d">chunk → LLM entity/relation extraction → Neo4j graph + BGE-M3 dense/sparse vectors</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="t">Retrieve (parallel)</div><div class="d">dense ANN + sparse + guarded text2Cypher graph hops</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="t">Fuse &amp; rerank</div><div class="d">RRF (k=40) → cross-encoder top-16 → score floor</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="t">CRAG loop</div><div class="d">confidence fastpath → LLM grading → rewrite → web fallback</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="t">Answer</div><div class="d">grounded, citation-numbered, full latency trace</div></div>
+  </div>
+
+  <h2>Measured impact</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="v">2.2s</div><div class="l">warm latency<br>(from 60s local)</div></div>
+    <div class="kpi"><div class="v">-71%</div><div class="l">vs untuned<br>hosted LLM build</div></div>
+    <div class="kpi"><div class="v">1.0</div><div class="l">Ragas faithfulness<br>&amp; precision</div></div>
+    <div class="kpi"><div class="v">1.0</div><div class="l">context recall<br>(golden multi-hop)</div></div>
+    <div class="kpi"><div class="v">49</div><div class="l">unit tests,<br>CI-gated</div></div>
+    <div class="kpi"><div class="v">$0</div><div class="l">infra + LLM cost<br>(free tiers / OSS)</div></div>
+  </div>
+  <table>
+    <tr><th>Optimization</th><th>Stage before → after</th><th>How</th></tr>
+    <tr><td>Rerank pool &amp; length</td><td>3596 ms → ~1500 ms</td><td>30→16 candidates, 1500→600-char pairs, capped token length</td></tr>
+    <tr><td>Graph traversal</td><td>1726 ms → 26–190 ms</td><td>skip text2Cypher when keyword entity-match succeeds; direct-entity-first ordering = hop decay</td></tr>
+    <tr><td>Grading</td><td>1223–2800 ms → 0 ms typical</td><td>reranker-confidence fastpath (≥0.78); single-rewrite cap; 1-relevant-doc pass rule</td></tr>
+    <tr><td>Generation</td><td>~1.6 s → 0.5–0.7 s</td><td>reasoning_effort=low on gpt-oss; prompt-level conciseness</td></tr>
+    <tr><td>Cold start</td><td>+5–7 s first query</td><td>models preloaded at startup; vector∥graph parallel threads</td></tr>
+  </table>
+
+  <h2>Stack &amp; use cases</h2>
+  <div class="grid2">
+    <div>
+      <div class="stack">
+        <span>Neo4j 5</span><span>Qdrant</span><span>BGE-M3</span><span>bge-reranker-v2-m3</span>
+        <span>LangGraph</span><span>Instructor</span><span>Groq gpt-oss-20b</span><span>Ollama</span>
+        <span>FastAPI</span><span>Streamlit</span><span>Celery+Redis</span><span>Ragas</span>
+        <span>DeepEval</span><span>DuckDuckGo</span><span>Docker</span><span>GitHub Actions</span>
+      </div>
+      <p style="margin-top:6px;font-size:9px;color:var(--muted)">
+      LLM-provider switchable in one env line (Groq ⇄ Ollama ⇄ OpenAI); embeddings &amp; reranking
+      always local — zero mandatory spend.</p>
+    </div>
+    <div>
+      <div class="chips">
+        <span class="chip">Enterprise KB multi-hop Q&amp;A</span><span class="chip">Support copilot (warranty, RMA, SLA)</span>
+        <span class="chip">Compliance cross-checks</span><span class="chip">Resume / candidate screening</span>
+        <span class="chip">Policy &amp; helpdesk lookup</span><span class="chip">Procurement chains</span>
+        <span class="chip">Research literature graphs</span><span class="chip">Contract clause tracing</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Roadmap highlights</h2>
+  <div class="grid3">
+    <ul><li>GPU/MPS reranking (~10× on last latency item)</li>
+        <li>Leiden graph communities for global thematic questions</li>
+        <li>Query decomposition for complex multi-hop</li></ul>
+    <ul><li>SSE token streaming (sub-second perceived latency)</li>
+        <li>Multi-turn memory with entity tracking</li>
+        <li>👍/👎 feedback → nightly Ragas regression gate in CI</li></ul>
+    <ul><li>Auth + multi-tenant collections</li>
+        <li>docx/HTML ingestion + OCR fallback</li>
+        <li>Kubernetes packaging + Prometheus stage metrics</li></ul>
+  </div>
+
+  <div class="foot">
+    <span>Full guide: docs/PROJECT_GUIDE.md · Live API :8000/docs · UI :8501</span>
+    <span>Validated on 17 indexed documents · 143 entities · 128 relations · 49 tests green</span>
+  </div>
+
+</div>
+</body>
+</html>
