@@ -1,0 +1,389 @@
+{
+  "mode": "hybrid",
+  "timestamp": "2026-10-12T09:33:31.650171+00:00",
+  "cases": 16,
+  "datasets": [
+    "evaluation/golden_multi_hop.jsonl"
+  ],
+  "median_stage_ms": {
+    "generate": 887.0,
+    "graph_search": 174.2,
+    "rerank": 66702.3,
+    "rrf_fusion": 0.1,
+    "vector_search": 1281.3
+  },
+  "rows": [
+    {
+      "user_input": "Which supplier's machining defect caused the AtlasArm actuator overheating incident, and which batch was affected?",
+      "retrieved_contexts": [
+        "Incident INC-1042: AtlasArm Actuator Overheating\n# Incident INC-1042: AtlasArm Actuator Overheating\n\n- Reported: September 2024\n- Product: AtlasArm industrial arm\n- Sites affected: two customer plants (45-unit installed base)\n- Severity: major\n\n## Root cause\n\nAeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in August 2024,\nreceived improper thread-lock application. Sustained load caused the housings to overheat.\n\n## Remediation\n\n- Replace all batch A-2231 housings in the field (completed November 2024).\n- Supplier corrective action (CAPA) opened with Kestrel Metals; quality contact Rosa Delgado.\n- Quarterly audits of Kestrel machining lines by Priya Nair's quality team.\n\nWarranty treatment followed policy WP-9: actuators carry 18 months of coverage.",
+        "AeroGrip Actuator\n# AeroGrip Actuator\n\nThe AeroGrip actuator is a harmonic-drive actuator with a brushless DC motor used in the\nAtlasArm industrial arm.\n\n## Supply chain\n\n- Housings: CNC-machined by Kestrel Metals in Tucson, AZ.\n- Motor windings: wound in-house at the Fremont plant.\n\n## Quality history\n\nBatch A-2231 (August 2024) housings from Kestrel Metals machining line 4 received improper\nthread-lock application, causing overheating under sustained load. The issue was tracked as\nincident INC-1042 and remediated by replacing affected housings and a supplier corrective action.",
+        "Kestrel Metals\n# Kestrel Metals\n\nKestrel Metals is a CNC machining supplier based in Tucson, AZ. It machines AeroGrip actuator\nhousings for the AtlasArm and fabricates HaloDock enclosures.\n\n## Supplier facts\n\n- Quality contact: Rosa Delgado.\n- On-time delivery rate: 96%.\n- Machining lines: line 2 and line 4 (Tucson plant).\n\n## Quality history\n\nHousings from batch A-2231, produced on machining line 4 in August 2024, had improper\nthread-lock application. This caused AtlasArm actuator overheating tracked under incident\nINC-1042 and resulted in a formal supplier corrective action (CAPA) with quarterly audits by the\nNimbus quality team led by Priya Nair.",
+        "Kestrel Metals\nKestrel Metals\n\nKestrel Metals, a CNC machining supplier in Tucson, AZ, produces AeroGrip actuator housings for AtlasArm and HaloDock enclosures. Key contacts include quality lead Rosa Delgado; on\u2011time delivery is 96%. Production uses machining lines 2 and 4, with batch A\u20112231 from line 4 (August 2024) suffering improper thread\u2011lock, causing AtlasArm actuator overheating and logged as incident INC\u20111042. The issue triggered a formal corrective action (CAPA) and quarterly audits by Nimbus quality team under lead Priya Nair.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\nIncident INC-1042: AtlasArm Actuator Overheating\n\nIncident INC-1042 (reported Sep 2024) involved major overheating of AtlasArm industrial arms at two customer plants (45 units). The root cause was AeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in Aug 2024, which received improper thread\u2011lock. Remediation included field replacement of all batch A-2231 housings (completed Nov 2024), a CAPA with supplier Kestrel Metals (quality contact Rosa Delgado), and quarterly audits of Kestrel lines by Priya Nair's quality team. Warranty was handled per policy WP-9, providing 18\u2011month coverage for actuators.",
+        "AeroGrip Actuator\nAeroGrip Actuator\n\nThe AeroGrip Actuator is a harmonic\u2011drive actuator with a brushless DC motor for the AtlasArm industrial arm. Its housing is CNC\u2011machined by Kestrel Metals in Tucson, AZ, while motor windings are wound in\u2011house at the Fremont plant. In August 2024, batch A\u20112231 housings from Kestrel Metals line 4 suffered improper thread\u2011lock application, leading to overheating under sustained load; the problem was logged as incident INC\u20111042 and corrected by replacing the affected housings and issuing a supplier corrective action."
+      ],
+      "response": "The overheating was caused by a machining defect from supplier Kestrel Metals, affecting batch A-2231 housings.",
+      "reference": "Kestrel Metals machining line 4 produced AeroGrip housings of batch A-2231 with improper thread-lock, causing the overheating tracked as incident INC-1042.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 4472.3,
+        "graph_search": 3525.4,
+        "rrf_fusion": 0.1,
+        "rerank": 66804.9,
+        "generate": 1651.5
+      }
+    },
+    {
+      "user_input": "Does the firmware that resolved the NimbusOne fleet telemetry dropouts satisfy our firmware security standard, and why?",
+      "retrieved_contexts": [
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n# Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\n- Reported: May 2024\n- Product: NimbusOne delivery drone (1,200 unit fleet, 14 cities)\n- Severity: major, no crashes\n\n## Root cause\n\nSkyLink X2 firmware 2.3.1 contained a watchdog reset defect that dropped the telemetry link under\nsustained airframe vibration. Average outage per flight was 17 minutes.\n\n## Remediation\n\n- Fleet-wide upgrade to signed firmware 2.3.2 completed June 2024.\n- The signed image satisfies security standard SEC-14; compliance audited quarterly by Marcus\n  Webb's firmware team.\n- Incident owned by Marcus Webb (Firmware Lead).",
+        "NimbusOne Delivery Drone\n# NimbusOne Delivery Drone\n\nNimbusOne is Nimbus Robotics' flagship autonomous delivery drone, released in March 2024.\nIt carries a 5 kg payload with a 32 km operating range. The fleet of 1,200 units serves 14 cities.\n\n## Bill of materials highlights\n\n- Telemetry radio: SkyLink X2 module (firmware line 2.x) built by BlueFin Circuits.\n- Battery pack: four VoltCore 4000 lithium-ion cells manufactured by Helix Cell Works.\n- Final assembly plant: Fremont, CA.\n\n## Service notes\n\nMid-flight telemetry dropouts observed across the fleet in May 2024 were tracked under incident\nINC-1077 and resolved by a signed firmware upgrade. Battery warranty coverage follows policy WP-9.",
+        "Standard SEC-14: Firmware Security\n# Standard SEC-14: Firmware Security\n\nSEC-14 requires that all field-deployed radios and controllers run cryptographically signed\nfirmware. Unsigned images and rollbacks below the signed baseline are prohibited.\n\n## Scope\n\n- SkyLink X2 telemetry radio line (NimbusOne, HaloDock links).\n- HaloDock dock controllers.\n\n## Compliance\n\nFirmware releases such as SkyLink X2 2.3.2 ship signed images and satisfy SEC-14. Compliance is\naudited quarterly by Marcus Webb's firmware team.",
+        "SkyLink X2 Radio Module\n# SkyLink X2 Radio Module\n\nThe SkyLink X2 is a dual-band 2.4/5 GHz telemetry radio module manufactured by BlueFin Circuits.\nIt is used in the NimbusOne drone and in HaloDock dock controllers.\n\n## Firmware history\n\n- 2.3.0 (February 2024): initial production firmware.\n- 2.3.1 (April 2024): introduced a watchdog reset defect causing intermittent link drops under\n  sustained vibration; implicated in fleet incident INC-1077.\n- 2.3.2 (June 2024): fixes the watchdog reset bug and ships cryptographically signed images,\n  satisfying the SEC-14 signed-firmware security standard.\n\nFirmware is distributed through the secure OTA channel only.",
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\nIncident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\nIncident INC-1077 reported May 2024 involved NimbusOne delivery drones (1,200 units across 14 cities) experiencing major telemetry dropouts due to a watchdog reset defect in SkyLink X2 firmware 2.3.1 under sustained vibration, causing average 17\u2011minute outages per flight. Remediation was a fleet\u2011wide upgrade to signed firmware 2.3.2 completed June 2024, meeting security standard SEC-14 with quarterly compliance audits. The incident was owned by Marcus Webb, Firmware Lead, whose team performed the audit and rollout.",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9."
+      ],
+      "response": "Yes. The remediation upgraded the fleet to SkyLink X2 firmware version 2.3.2, which ships cryptographically signed images and is stated to satisfy security standard SEC-14, which requires signed firmware for field\u2011deployed radios [1][3].",
+      "reference": "Yes. SkyLink X2 firmware 2.3.2 fixed the INC-1077 watchdog defect and ships cryptographically signed images, satisfying SEC-14's signed-firmware requirement.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1283.8,
+        "graph_search": 182.8,
+        "rrf_fusion": 0.1,
+        "rerank": 69428.2,
+        "generate": 899.4
+      }
+    },
+    {
+      "user_input": "Who should a field engineer contact to arrange an RMA for a failed VoltCore 4000 battery, and what is the supplier's turnaround SLA?",
+      "retrieved_contexts": [
+        "Helix Cell Works\n# Helix Cell Works\n\nHelix Cell Works is a battery cell manufacturer based in Osaka, Japan. It is the sole supplier\nof the VoltCore 4000 cell used in NimbusOne battery packs.\n\n## Supplier facts\n\n- Quality contact: Kenji Watanabe.\n- RMA turnaround SLA: 21 days.\n- Certification: ISO 9001:2015.\n\n## Escalation path\n\nBattery quality issues route through Priya Nair (Quality Lead) to the supplier's quality office.\nLogistics for failed-cell returns are coordinated by Dana Kim (Supply Chain Analyst).",
+        "Policy WP-9: Warranty Terms\n# Policy WP-9: Warranty Terms\n\nStandard warranty coverage for Nimbus Robotics products:\n\n- Products (NimbusOne, AtlasArm, HaloDock): 24 months from purchase.\n- Batteries and cells, including VoltCore 4000: 12 months.\n- Actuators, including AeroGrip: 18 months.\n\n## Claims process\n\n1. Field engineer logs a warranty case with a diagnostic bundle attached.\n2. Supply Chain analyst Dana Kim issues the supplier RMA:\n   - Helix Cell Works RMA turnaround SLA: 21 days.\n   - Kestrel Metals RMA turnaround SLA: 14 days.\n3. Out-of-warranty units qualify for the replacement program at a 15% discount.\n\nBatteries ship under UN3481 Class 9 labeling requirements.",
+        "VoltCore 4000 Battery Cell\n# VoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium-ion cell rated at 4000 mAh, manufactured exclusively\nby Helix Cell Works in Osaka, Japan.\n\n## Specifications\n\n- Cycle life: 800 cycles to 80% capacity.\n- Operating temperature: -20 to 60 degrees C.\n- Shipping class: UN3481 (lithium-ion contained in equipment).\n\n## Usage\n\nFour VoltCore 4000 cells form the NimbusOne drone battery pack. Battery warranty claims follow\npolicy WP-9 with 12 months of coverage. Failed cells are returned via supplier RMA handled by\nSupply Chain analyst Dana Kim; Helix Cell Works honors an RMA turnaround SLA of 21 days.",
+        "Helix Cell Works\nHelix Cell Works\n\nHelix Cell Works, a battery cell manufacturer in Osaka, Japan, is the exclusive supplier of the VoltCore 4000 cell for NimbusOne battery packs. Key contacts include quality lead Kenji Watanabe, escalation lead Priya Nair, and supply chain analyst Dana Kim. The supplier adheres to ISO 9001:2015 certification and offers a 21\u2011day RMA turnaround SLA. Quality issues are escalated through Priya Nair to the supplier's quality office, while logistics for failed\u2011cell returns are managed by Dana Kim.",
+        "VoltCore 4000 Battery Cell\nVoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium\u2011ion battery cell (4000\u202fmAh) produced by Helix Cell Works in Osaka, Japan. It offers 800 cycles to 80% capacity, operates from \u201320\u202f\u00b0C to 60\u202f\u00b0C, and ships under UN3481. Four cells are used in the NimbusOne drone battery pack. Warranty claims follow policy WP\u20119 with a 12\u2011month coverage period, and defective units are returned via an RMA managed by supply\u2011chain analyst Dana Kim; Helix Cell Works guarantees a 21\u2011day RMA turnaround SLA.",
+        "Policy WP-9: Warranty Terms\nPolicy WP-9: Warranty Terms\n\nPolicy WP-9 defines warranty terms for Nimbus Robotics products: NimbusOne, AtlasArm, and HaloDock receive 24\u2011month coverage; batteries and cells, including the VoltCore 4000, receive 12 months; actuators, such as AeroGrip, receive 18 months. Claims are logged by a field engineer and processed by supply\u2011chain analyst Dana Kim, who issues supplier RMAs with turnaround SLAs of 21 days for Helix Cell Works and 14 days for Kestrel Metals. Out\u2011of\u2011warranty units may be replaced at a 15% discount. Battery shipments must comply with UN3481 Class\u202f9 labeling requirements."
+      ],
+      "response": "The field engineer should coordinate with supply\u2011chain analyst Dana Kim to arrange the RMA, and Helix Cell Works guarantees a 21\u2011day RMA turnaround SLA. [2][3]",
+      "reference": "Dana Kim, Supply Chain Analyst, issues the supplier RMA with Helix Cell Works, which honors a 21-day RMA turnaround SLA per policy WP-9.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1706.0,
+        "graph_search": 314.9,
+        "rrf_fusion": 0.1,
+        "rerank": 66699.2,
+        "generate": 726.0
+      }
+    },
+    {
+      "user_input": "Which incident involved HaloDock breakers tripping, which component was at fault, and who coordinates the fix rollout?",
+      "retrieved_contexts": [
+        "Incident INC-1090: HaloDock Breaker Trips\n# Incident INC-1090: HaloDock Breaker Trips\n\n- Reported: February 2025\n- Product: HaloDock charging dock (900 W)\n- Sites affected: three depots\n- Severity: moderate\n\n## Root cause\n\nThe revision-A 20 A power relay supplied by BlueFin Circuits is undersized for full 900 W\nsimultaneous charge sessions, tripping depot breakers.\n\n## Remediation\n\n- Interim: dock firmware 3.1 scheduler staggers simultaneous sessions.\n- Permanent: 30 A revision-B relay from BlueFin Circuits, depot retrofit in progress.\n- Field rollout coordinated by Lena Ortiz (Field Service Manager) with the Hardware Platform\n  team.",
+        "HaloDock Wireless Charging Dock\n# HaloDock Wireless Charging Dock\n\nHaloDock is a wireless charging dock for the NimbusOne drone, released in January 2025 with a\n900 W output. Approximately 300 depots operate HaloDock stations.\n\n## Key subsystems\n\n- Power relay: a 20 A relay supplied by BlueFin Circuits (revision A).\n- Enclosure: fabricated by Kestrel Metals.\n- Load balancing: requires dock firmware 3.1 or later to stagger simultaneous charge sessions.\n\n## Known constraints\n\nEarly revision-A relays can trip depot breakers under full 900 W simultaneous load; see incident\nINC-1090 for remediation status. Dock controllers fall under the signed-firmware rule SEC-14.",
+        "BlueFin Circuits\n# BlueFin Circuits\n\nBlueFin Circuits is an electronics manufacturer supplying printed circuit boards and\nelectromechanical parts to Nimbus Robotics.\n\n## Supplied parts\n\n- SkyLink X2 radio module (complete module build) for NimbusOne and HaloDock.\n- AtlasArm controller PCB.\n- HaloDock power relay, 20 A, revision A.\n\n## Quality history\n\nThe revision-A 20 A relay is undersized for full 900 W simultaneous dock loads; breakers tripped\nat three depots in February 2025 under incident INC-1090. A 30 A revision-B relay is scheduled as\nthe permanent fix. The SkyLink X2 firmware 2.3.1 watchdog defect (incident INC-1077) was also on\nBlueFin-built hardware and fixed in signed firmware 2.3.2.",
+        "Incident INC-1090: HaloDock Breaker Trips\nIncident INC-1090: HaloDock Breaker Trips\n\nIncident INC-1090 (reported Feb\u202f2025) involved HaloDock 900\u202fW charging docks at three depots, classified as moderate severity. The root cause was an undersized revision\u2011A 20\u202fA power relay supplied by BlueFin Circuits, which could not handle concurrent 900\u202fW sessions and caused breaker trips. Interim remediation applied firmware\u202f3.1 scheduler to stagger sessions; permanent fix will replace relays with 30\u202fA revision\u2011B units from BlueFin, with depot retrofits underway. Field rollout is led by Lena Ortiz, Field Service Manager, together with the Hardware Platform team.",
+        "BlueFin Circuits\nBlueFin Circuits\n\nBlueFin Circuits, an electronics manufacturer, supplies printed circuit boards and electromechanical parts to Nimbus Robotics, including the SkyLink X2 radio module (used in NimbusOne and HaloDock), the AtlasArm controller PCB, and a 20\u202fA revision\u2011A HaloDock power relay. The revision\u2011A relay was undersized for 900\u202fW dock loads, causing breaker trips at three depots in February\u202f2025 (incident INC\u20111090); a 30\u202fA revision\u2011B relay is slated as the permanent fix. The SkyLink X2 firmware 2.3.1 had a watchdog defect (incident INC\u20111077) on BlueFin\u2011built hardware, corrected with signed firmware 2.3.2.",
+        "HaloDock Wireless Charging Dock\nHaloDock Wireless Charging Dock\n\nHaloDock Wireless Charging Dock, released Jan 2025, provides 900\u202fW wireless charging for NimbusOne drones; ~300 depots host stations. Key subsystems include a 20\u202fA power relay (BlueFin Circuits, rev\u202fA), an enclosure made by Kestrel Metals, and load\u2011balancing firmware (dock firmware\u202f3.1+). Early rev\u2011A relays may trip depot breakers under full load (incident INC-1090) and dock controllers are subject to signed\u2011firmware rule SEC\u201114."
+      ],
+      "response": "The breaker\u2011trip issue occurred in incident INC-1090; the faulty component was the revision\u2011A 20\u202fA power relay supplied by BlueFin Circuits, and the fix rollout is being coordinated by Lena Ortiz, Field Service Manager (with the Hardware Platform team) [4][1].",
+      "reference": "INC-1090: the revision-A 20 A relay supplied by BlueFin Circuits was undersized for 900 W loads; Lena Ortiz (Field Service Manager) coordinates the retrofit to the 30 A revision-B relay.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1855.8,
+        "graph_search": 1042.4,
+        "rrf_fusion": 0.1,
+        "rerank": 69601.1,
+        "generate": 919.3
+      }
+    },
+    {
+      "user_input": "How is Kestrel Metals connected to both AtlasArm and HaloDock products?",
+      "retrieved_contexts": [
+        "Kestrel Metals\n# Kestrel Metals\n\nKestrel Metals is a CNC machining supplier based in Tucson, AZ. It machines AeroGrip actuator\nhousings for the AtlasArm and fabricates HaloDock enclosures.\n\n## Supplier facts\n\n- Quality contact: Rosa Delgado.\n- On-time delivery rate: 96%.\n- Machining lines: line 2 and line 4 (Tucson plant).\n\n## Quality history\n\nHousings from batch A-2231, produced on machining line 4 in August 2024, had improper\nthread-lock application. This caused AtlasArm actuator overheating tracked under incident\nINC-1042 and resulted in a formal supplier corrective action (CAPA) with quarterly audits by the\nNimbus quality team led by Priya Nair.",
+        "HaloDock Wireless Charging Dock\n# HaloDock Wireless Charging Dock\n\nHaloDock is a wireless charging dock for the NimbusOne drone, released in January 2025 with a\n900 W output. Approximately 300 depots operate HaloDock stations.\n\n## Key subsystems\n\n- Power relay: a 20 A relay supplied by BlueFin Circuits (revision A).\n- Enclosure: fabricated by Kestrel Metals.\n- Load balancing: requires dock firmware 3.1 or later to stagger simultaneous charge sessions.\n\n## Known constraints\n\nEarly revision-A relays can trip depot breakers under full 900 W simultaneous load; see incident\nINC-1090 for remediation status. Dock controllers fall under the signed-firmware rule SEC-14.",
+        "Policy WP-9: Warranty Terms\n# Policy WP-9: Warranty Terms\n\nStandard warranty coverage for Nimbus Robotics products:\n\n- Products (NimbusOne, AtlasArm, HaloDock): 24 months from purchase.\n- Batteries and cells, including VoltCore 4000: 12 months.\n- Actuators, including AeroGrip: 18 months.\n\n## Claims process\n\n1. Field engineer logs a warranty case with a diagnostic bundle attached.\n2. Supply Chain analyst Dana Kim issues the supplier RMA:\n   - Helix Cell Works RMA turnaround SLA: 21 days.\n   - Kestrel Metals RMA turnaround SLA: 14 days.\n3. Out-of-warranty units qualify for the replacement program at a 15% discount.\n\nBatteries ship under UN3481 Class 9 labeling requirements.",
+        "Kestrel Metals\nKestrel Metals\n\nKestrel Metals, a CNC machining supplier in Tucson, AZ, produces AeroGrip actuator housings for AtlasArm and HaloDock enclosures. Key contacts include quality lead Rosa Delgado; on\u2011time delivery is 96%. Production uses machining lines 2 and 4, with batch A\u20112231 from line 4 (August 2024) suffering improper thread\u2011lock, causing AtlasArm actuator overheating and logged as incident INC\u20111042. The issue triggered a formal corrective action (CAPA) and quarterly audits by Nimbus quality team under lead Priya Nair.",
+        "AtlasArm Industrial Robotic Arm\nAtlasArm Industrial Robotic Arm\n\nAtlasArm is a six-axis industrial robotic arm launched Sep 2023 with a 12\u202fkg payload; 380 units are deployed across 45 customer plants. Key components include AeroGrip actuator assemblies (housing CNC\u2011machined by Kestrel Metals) and a controller PCB supplied by BlueFin Circuits. In Sep 2024, sustained\u2011load overheating occurred at two plants (incident INC-1042) and was traced to a machining defect in the AeroGrip housings. Actuator warranty is governed by policy WP\u20119, providing 18\u2011month coverage.",
+        "Policy WP-9: Warranty Terms\nPolicy WP-9: Warranty Terms\n\nPolicy WP-9 defines warranty terms for Nimbus Robotics products: NimbusOne, AtlasArm, and HaloDock receive 24\u2011month coverage; batteries and cells, including the VoltCore 4000, receive 12 months; actuators, such as AeroGrip, receive 18 months. Claims are logged by a field engineer and processed by supply\u2011chain analyst Dana Kim, who issues supplier RMAs with turnaround SLAs of 21 days for Helix Cell Works and 14 days for Kestrel Metals. Out\u2011of\u2011warranty units may be replaced at a 15% discount. Battery shipments must comply with UN3481 Class\u202f9 labeling requirements."
+      ],
+      "response": "Kestrel Metals CNC\u2011machines the AeroGrip actuator housings used in AtlasArm and also fabricates the enclosures for HaloDock charging docks [1][2].",
+      "reference": "Kestrel Metals CNC-machines AeroGrip actuator housings used in AtlasArm and fabricates the HaloDock enclosure; defective line-4 housings triggered CAPA after INC-1042.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1278.8,
+        "graph_search": 169.4,
+        "rrf_fusion": 0.1,
+        "rerank": 66373.8,
+        "generate": 862.0
+      }
+    },
+    {
+      "user_input": "Which NimbusOne incidents trace back to parts built by BlueFin Circuits?",
+      "retrieved_contexts": [
+        "NimbusOne Delivery Drone\n# NimbusOne Delivery Drone\n\nNimbusOne is Nimbus Robotics' flagship autonomous delivery drone, released in March 2024.\nIt carries a 5 kg payload with a 32 km operating range. The fleet of 1,200 units serves 14 cities.\n\n## Bill of materials highlights\n\n- Telemetry radio: SkyLink X2 module (firmware line 2.x) built by BlueFin Circuits.\n- Battery pack: four VoltCore 4000 lithium-ion cells manufactured by Helix Cell Works.\n- Final assembly plant: Fremont, CA.\n\n## Service notes\n\nMid-flight telemetry dropouts observed across the fleet in May 2024 were tracked under incident\nINC-1077 and resolved by a signed firmware upgrade. Battery warranty coverage follows policy WP-9.",
+        "BlueFin Circuits\n# BlueFin Circuits\n\nBlueFin Circuits is an electronics manufacturer supplying printed circuit boards and\nelectromechanical parts to Nimbus Robotics.\n\n## Supplied parts\n\n- SkyLink X2 radio module (complete module build) for NimbusOne and HaloDock.\n- AtlasArm controller PCB.\n- HaloDock power relay, 20 A, revision A.\n\n## Quality history\n\nThe revision-A 20 A relay is undersized for full 900 W simultaneous dock loads; breakers tripped\nat three depots in February 2025 under incident INC-1090. A 30 A revision-B relay is scheduled as\nthe permanent fix. The SkyLink X2 firmware 2.3.1 watchdog defect (incident INC-1077) was also on\nBlueFin-built hardware and fixed in signed firmware 2.3.2.",
+        "HaloDock Wireless Charging Dock\n# HaloDock Wireless Charging Dock\n\nHaloDock is a wireless charging dock for the NimbusOne drone, released in January 2025 with a\n900 W output. Approximately 300 depots operate HaloDock stations.\n\n## Key subsystems\n\n- Power relay: a 20 A relay supplied by BlueFin Circuits (revision A).\n- Enclosure: fabricated by Kestrel Metals.\n- Load balancing: requires dock firmware 3.1 or later to stagger simultaneous charge sessions.\n\n## Known constraints\n\nEarly revision-A relays can trip depot breakers under full 900 W simultaneous load; see incident\nINC-1090 for remediation status. Dock controllers fall under the signed-firmware rule SEC-14.",
+        "SkyLink X2 Radio Module\n# SkyLink X2 Radio Module\n\nThe SkyLink X2 is a dual-band 2.4/5 GHz telemetry radio module manufactured by BlueFin Circuits.\nIt is used in the NimbusOne drone and in HaloDock dock controllers.\n\n## Firmware history\n\n- 2.3.0 (February 2024): initial production firmware.\n- 2.3.1 (April 2024): introduced a watchdog reset defect causing intermittent link drops under\n  sustained vibration; implicated in fleet incident INC-1077.\n- 2.3.2 (June 2024): fixes the watchdog reset bug and ships cryptographically signed images,\n  satisfying the SEC-14 signed-firmware security standard.\n\nFirmware is distributed through the secure OTA channel only.",
+        "BlueFin Circuits\nBlueFin Circuits\n\nBlueFin Circuits, an electronics manufacturer, supplies printed circuit boards and electromechanical parts to Nimbus Robotics, including the SkyLink X2 radio module (used in NimbusOne and HaloDock), the AtlasArm controller PCB, and a 20\u202fA revision\u2011A HaloDock power relay. The revision\u2011A relay was undersized for 900\u202fW dock loads, causing breaker trips at three depots in February\u202f2025 (incident INC\u20111090); a 30\u202fA revision\u2011B relay is slated as the permanent fix. The SkyLink X2 firmware 2.3.1 had a watchdog defect (incident INC\u20111077) on BlueFin\u2011built hardware, corrected with signed firmware 2.3.2.",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9."
+      ],
+      "response": "The telemetry dropouts logged as incident INC-1077 were traced to the SkyLink X2 radio module built by BlueFin Circuits, and the breaker trips recorded as incident INC-1090 were caused by the revision\u2011A 20\u202fA power relay supplied by BlueFin Circuits.",
+      "reference": "INC-1077: SkyLink X2 radio module firmware 2.3.1 watchdog defect; BlueFin Circuits builds the SkyLink X2 module.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1078.3,
+        "graph_search": 163.5,
+        "rrf_fusion": 0.1,
+        "rerank": 66040.4,
+        "generate": 1090.5
+      }
+    },
+    {
+      "user_input": "Is a warranty claim on a 14-month-old VoltCore 4000 battery covered, and what option exists if not?",
+      "retrieved_contexts": [
+        "VoltCore 4000 Battery Cell\n# VoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium-ion cell rated at 4000 mAh, manufactured exclusively\nby Helix Cell Works in Osaka, Japan.\n\n## Specifications\n\n- Cycle life: 800 cycles to 80% capacity.\n- Operating temperature: -20 to 60 degrees C.\n- Shipping class: UN3481 (lithium-ion contained in equipment).\n\n## Usage\n\nFour VoltCore 4000 cells form the NimbusOne drone battery pack. Battery warranty claims follow\npolicy WP-9 with 12 months of coverage. Failed cells are returned via supplier RMA handled by\nSupply Chain analyst Dana Kim; Helix Cell Works honors an RMA turnaround SLA of 21 days.",
+        "Policy WP-9: Warranty Terms\n# Policy WP-9: Warranty Terms\n\nStandard warranty coverage for Nimbus Robotics products:\n\n- Products (NimbusOne, AtlasArm, HaloDock): 24 months from purchase.\n- Batteries and cells, including VoltCore 4000: 12 months.\n- Actuators, including AeroGrip: 18 months.\n\n## Claims process\n\n1. Field engineer logs a warranty case with a diagnostic bundle attached.\n2. Supply Chain analyst Dana Kim issues the supplier RMA:\n   - Helix Cell Works RMA turnaround SLA: 21 days.\n   - Kestrel Metals RMA turnaround SLA: 14 days.\n3. Out-of-warranty units qualify for the replacement program at a 15% discount.\n\nBatteries ship under UN3481 Class 9 labeling requirements.",
+        "VoltCore 4000 Battery Cell\nVoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium\u2011ion battery cell (4000\u202fmAh) produced by Helix Cell Works in Osaka, Japan. It offers 800 cycles to 80% capacity, operates from \u201320\u202f\u00b0C to 60\u202f\u00b0C, and ships under UN3481. Four cells are used in the NimbusOne drone battery pack. Warranty claims follow policy WP\u20119 with a 12\u2011month coverage period, and defective units are returned via an RMA managed by supply\u2011chain analyst Dana Kim; Helix Cell Works guarantees a 21\u2011day RMA turnaround SLA.",
+        "Policy WP-9: Warranty Terms\nPolicy WP-9: Warranty Terms\n\nPolicy WP-9 defines warranty terms for Nimbus Robotics products: NimbusOne, AtlasArm, and HaloDock receive 24\u2011month coverage; batteries and cells, including the VoltCore 4000, receive 12 months; actuators, such as AeroGrip, receive 18 months. Claims are logged by a field engineer and processed by supply\u2011chain analyst Dana Kim, who issues supplier RMAs with turnaround SLAs of 21 days for Helix Cell Works and 14 days for Kestrel Metals. Out\u2011of\u2011warranty units may be replaced at a 15% discount. Battery shipments must comply with UN3481 Class\u202f9 labeling requirements.",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9.",
+        "Helix Cell Works\nHelix Cell Works\n\nHelix Cell Works, a battery cell manufacturer in Osaka, Japan, is the exclusive supplier of the VoltCore 4000 cell for NimbusOne battery packs. Key contacts include quality lead Kenji Watanabe, escalation lead Priya Nair, and supply chain analyst Dana Kim. The supplier adheres to ISO 9001:2015 certification and offers a 21\u2011day RMA turnaround SLA. Quality issues are escalated through Priya Nair to the supplier's quality office, while logistics for failed\u2011cell returns are managed by Dana Kim."
+      ],
+      "response": "No, a 14\u2011month\u2011old VoltCore 4000 battery is beyond the 12\u2011month warranty coverage specified in policy WP\u20119 [2][4]. If the battery is out of warranty, it may be replaced through the out\u2011of\u2011warranty replacement program at a 15% discount [2][4].",
+      "reference": "No. WP-9 covers batteries including VoltCore 4000 for only 12 months; out-of-warranty units qualify for the replacement program at a 15% discount.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1274.0,
+        "graph_search": 191.9,
+        "rrf_fusion": 0.1,
+        "rerank": 68307.0,
+        "generate": 936.8
+      }
+    },
+    {
+      "user_input": "Who are the named quality contacts at Helix Cell Works and Kestrel Metals, and who leads supplier quality internally?",
+      "retrieved_contexts": [
+        "Helix Cell Works\n# Helix Cell Works\n\nHelix Cell Works is a battery cell manufacturer based in Osaka, Japan. It is the sole supplier\nof the VoltCore 4000 cell used in NimbusOne battery packs.\n\n## Supplier facts\n\n- Quality contact: Kenji Watanabe.\n- RMA turnaround SLA: 21 days.\n- Certification: ISO 9001:2015.\n\n## Escalation path\n\nBattery quality issues route through Priya Nair (Quality Lead) to the supplier's quality office.\nLogistics for failed-cell returns are coordinated by Dana Kim (Supply Chain Analyst).",
+        "Team Directory\n# Team Directory\n\nNimbus Robotics headquarters: Fremont, CA. Operations hubs: Austin, TX and Rotterdam, NL.\n\n- Priya Nair - Quality Lead. Owns supplier quality, CAPAs and audits (e.g., Kestrel Metals).\n- Marcus Webb - Firmware Lead. Owns firmware incidents (INC-1077) and SEC-14 compliance audits.\n- Lena Ortiz - Field Service Manager. Coordinates field rollouts (INC-1090 retrofit).\n- Dana Kim - Supply Chain Analyst. Issues supplier RMAs under policy WP-9.",
+        "Helix Cell Works\nHelix Cell Works\n\nHelix Cell Works, a battery cell manufacturer in Osaka, Japan, is the exclusive supplier of the VoltCore 4000 cell for NimbusOne battery packs. Key contacts include quality lead Kenji Watanabe, escalation lead Priya Nair, and supply chain analyst Dana Kim. The supplier adheres to ISO 9001:2015 certification and offers a 21\u2011day RMA turnaround SLA. Quality issues are escalated through Priya Nair to the supplier's quality office, while logistics for failed\u2011cell returns are managed by Dana Kim.",
+        "Kestrel Metals\nKestrel Metals\n\nKestrel Metals, a CNC machining supplier in Tucson, AZ, produces AeroGrip actuator housings for AtlasArm and HaloDock enclosures. Key contacts include quality lead Rosa Delgado; on\u2011time delivery is 96%. Production uses machining lines 2 and 4, with batch A\u20112231 from line 4 (August 2024) suffering improper thread\u2011lock, causing AtlasArm actuator overheating and logged as incident INC\u20111042. The issue triggered a formal corrective action (CAPA) and quarterly audits by Nimbus quality team under lead Priya Nair.",
+        "Team Directory\nTeam Directory\n\nNimbus Robotics, headquartered in Fremont, CA with hubs in Austin, TX and Rotterdam, NL, lists key staff: Priya Nair (Quality Lead) manages supplier quality, CAPAs and audits for vendors such as Kestrel Metals; Marcus Webb (Firmware Lead) handles firmware incidents (e.g., INC-1077) and SEC-14 compliance audits; Lena Ortiz (Field Service Manager) oversees field rollouts including retrofit incident INC-1090; Dana Kim (Supply Chain Analyst) processes supplier RMAs under policy WP-9.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\nIncident INC-1042: AtlasArm Actuator Overheating\n\nIncident INC-1042 (reported Sep 2024) involved major overheating of AtlasArm industrial arms at two customer plants (45 units). The root cause was AeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in Aug 2024, which received improper thread\u2011lock. Remediation included field replacement of all batch A-2231 housings (completed Nov 2024), a CAPA with supplier Kestrel Metals (quality contact Rosa Delgado), and quarterly audits of Kestrel lines by Priya Nair's quality team. Warranty was handled per policy WP-9, providing 18\u2011month coverage for actuators."
+      ],
+      "response": "The quality contact at Helix Cell Works is Kenji Watanabe, and the quality contact at Kestrel Metals is Rosa Delgado. Internally, supplier quality is led by Priya Nair, the Quality Lead.",
+      "reference": "Kenji Watanabe at Helix Cell Works and Rosa Delgado at Kestrel Metals; Priya Nair is the internal Quality Lead owning supplier quality and CAPAs.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1394.6,
+        "graph_search": 128.7,
+        "rrf_fusion": 0.1,
+        "rerank": 70498.5,
+        "generate": 1030.6
+      }
+    },
+    {
+      "user_input": "Which component links Helix Cell Works to the NimbusOne flight battery pack?",
+      "retrieved_contexts": [
+        "Helix Cell Works\n# Helix Cell Works\n\nHelix Cell Works is a battery cell manufacturer based in Osaka, Japan. It is the sole supplier\nof the VoltCore 4000 cell used in NimbusOne battery packs.\n\n## Supplier facts\n\n- Quality contact: Kenji Watanabe.\n- RMA turnaround SLA: 21 days.\n- Certification: ISO 9001:2015.\n\n## Escalation path\n\nBattery quality issues route through Priya Nair (Quality Lead) to the supplier's quality office.\nLogistics for failed-cell returns are coordinated by Dana Kim (Supply Chain Analyst).",
+        "NimbusOne Delivery Drone\n# NimbusOne Delivery Drone\n\nNimbusOne is Nimbus Robotics' flagship autonomous delivery drone, released in March 2024.\nIt carries a 5 kg payload with a 32 km operating range. The fleet of 1,200 units serves 14 cities.\n\n## Bill of materials highlights\n\n- Telemetry radio: SkyLink X2 module (firmware line 2.x) built by BlueFin Circuits.\n- Battery pack: four VoltCore 4000 lithium-ion cells manufactured by Helix Cell Works.\n- Final assembly plant: Fremont, CA.\n\n## Service notes\n\nMid-flight telemetry dropouts observed across the fleet in May 2024 were tracked under incident\nINC-1077 and resolved by a signed firmware upgrade. Battery warranty coverage follows policy WP-9.",
+        "VoltCore 4000 Battery Cell\n# VoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium-ion cell rated at 4000 mAh, manufactured exclusively\nby Helix Cell Works in Osaka, Japan.\n\n## Specifications\n\n- Cycle life: 800 cycles to 80% capacity.\n- Operating temperature: -20 to 60 degrees C.\n- Shipping class: UN3481 (lithium-ion contained in equipment).\n\n## Usage\n\nFour VoltCore 4000 cells form the NimbusOne drone battery pack. Battery warranty claims follow\npolicy WP-9 with 12 months of coverage. Failed cells are returned via supplier RMA handled by\nSupply Chain analyst Dana Kim; Helix Cell Works honors an RMA turnaround SLA of 21 days.",
+        "Helix Cell Works\nHelix Cell Works\n\nHelix Cell Works, a battery cell manufacturer in Osaka, Japan, is the exclusive supplier of the VoltCore 4000 cell for NimbusOne battery packs. Key contacts include quality lead Kenji Watanabe, escalation lead Priya Nair, and supply chain analyst Dana Kim. The supplier adheres to ISO 9001:2015 certification and offers a 21\u2011day RMA turnaround SLA. Quality issues are escalated through Priya Nair to the supplier's quality office, while logistics for failed\u2011cell returns are managed by Dana Kim.",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9.",
+        "VoltCore 4000 Battery Cell\nVoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium\u2011ion battery cell (4000\u202fmAh) produced by Helix Cell Works in Osaka, Japan. It offers 800 cycles to 80% capacity, operates from \u201320\u202f\u00b0C to 60\u202f\u00b0C, and ships under UN3481. Four cells are used in the NimbusOne drone battery pack. Warranty claims follow policy WP\u20119 with a 12\u2011month coverage period, and defective units are returned via an RMA managed by supply\u2011chain analyst Dana Kim; Helix Cell Works guarantees a 21\u2011day RMA turnaround SLA."
+      ],
+      "response": "The VoltCore\u202f4000 battery cell links Helix Cell Works to the NimbusOne flight battery pack.",
+      "reference": "The VoltCore 4000 cell, manufactured by Helix Cell Works in Osaka; four cells form each NimbusOne battery pack.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1217.4,
+        "graph_search": 133.2,
+        "rrf_fusion": 0.1,
+        "rerank": 66331.6,
+        "generate": 802.5
+      }
+    },
+    {
+      "user_input": "Which firmware must HaloDock run for load balancing, and does SEC-14 apply to its controllers?",
+      "retrieved_contexts": [
+        "Standard SEC-14: Firmware Security\n# Standard SEC-14: Firmware Security\n\nSEC-14 requires that all field-deployed radios and controllers run cryptographically signed\nfirmware. Unsigned images and rollbacks below the signed baseline are prohibited.\n\n## Scope\n\n- SkyLink X2 telemetry radio line (NimbusOne, HaloDock links).\n- HaloDock dock controllers.\n\n## Compliance\n\nFirmware releases such as SkyLink X2 2.3.2 ship signed images and satisfy SEC-14. Compliance is\naudited quarterly by Marcus Webb's firmware team.",
+        "HaloDock Wireless Charging Dock\n# HaloDock Wireless Charging Dock\n\nHaloDock is a wireless charging dock for the NimbusOne drone, released in January 2025 with a\n900 W output. Approximately 300 depots operate HaloDock stations.\n\n## Key subsystems\n\n- Power relay: a 20 A relay supplied by BlueFin Circuits (revision A).\n- Enclosure: fabricated by Kestrel Metals.\n- Load balancing: requires dock firmware 3.1 or later to stagger simultaneous charge sessions.\n\n## Known constraints\n\nEarly revision-A relays can trip depot breakers under full 900 W simultaneous load; see incident\nINC-1090 for remediation status. Dock controllers fall under the signed-firmware rule SEC-14.",
+        "SkyLink X2 Radio Module\n# SkyLink X2 Radio Module\n\nThe SkyLink X2 is a dual-band 2.4/5 GHz telemetry radio module manufactured by BlueFin Circuits.\nIt is used in the NimbusOne drone and in HaloDock dock controllers.\n\n## Firmware history\n\n- 2.3.0 (February 2024): initial production firmware.\n- 2.3.1 (April 2024): introduced a watchdog reset defect causing intermittent link drops under\n  sustained vibration; implicated in fleet incident INC-1077.\n- 2.3.2 (June 2024): fixes the watchdog reset bug and ships cryptographically signed images,\n  satisfying the SEC-14 signed-firmware security standard.\n\nFirmware is distributed through the secure OTA channel only.",
+        "HaloDock Wireless Charging Dock\nHaloDock Wireless Charging Dock\n\nHaloDock Wireless Charging Dock, released Jan 2025, provides 900\u202fW wireless charging for NimbusOne drones; ~300 depots host stations. Key subsystems include a 20\u202fA power relay (BlueFin Circuits, rev\u202fA), an enclosure made by Kestrel Metals, and load\u2011balancing firmware (dock firmware\u202f3.1+). Early rev\u2011A relays may trip depot breakers under full load (incident INC-1090) and dock controllers are subject to signed\u2011firmware rule SEC\u201114.",
+        "Standard SEC-14: Firmware Security\nStandard SEC-14: Firmware Security\n\nSEC-14 Firmware Security mandates cryptographically signed firmware for all field\u2011deployed radios and controllers, prohibiting unsigned images and rollbacks below the signed baseline. Scope covers the SkyLink X2 telemetry radio line (including NimbusOne and HaloDock links) and HaloDock dock controllers. The SkyLink X2 2.3.2 firmware release provides signed images that meet SEC\u201114. Quarterly compliance audits are performed by Marcus Webb\u2019s firmware team.",
+        "SkyLink X2 Radio Module\nSkyLink X2 Radio Module\n\nThe SkyLink X2 Radio Module is a dual\u2011band 2.4/5\u202fGHz telemetry unit made by BlueFin Circuits, installed in NimbusOne drones and HaloDock dock controllers. Firmware versions: 2.3.0 (Feb\u202f2024) initial release; 2.3.1 (Apr\u202f2024) introduced a watchdog reset defect causing intermittent link drops under vibration, linked to incident INC-1077; 2.3.2 (Jun\u202f2024) fixed the bug and added cryptographically signed images to meet SEC\u201114 signed\u2011firmware security standards. All firmware is delivered exclusively via a secure OTA channel."
+      ],
+      "response": "HaloDock must run dock firmware version 3.1 or later for load\u2011balancing, and SEC\u201114\u2019s signed\u2011firmware requirement does apply to its dock controllers.",
+      "reference": "HaloDock requires dock firmware 3.1 or later for load balancing; yes, SEC-14 explicitly covers HaloDock dock controllers with signed firmware.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1257.0,
+        "graph_search": 121.9,
+        "rrf_fusion": 0.1,
+        "rerank": 66622.1,
+        "generate": 705.7
+      }
+    },
+    {
+      "user_input": "How many cities does the NimbusOne fleet serve and which plant performs final assembly?",
+      "retrieved_contexts": [
+        "NimbusOne Delivery Drone\n# NimbusOne Delivery Drone\n\nNimbusOne is Nimbus Robotics' flagship autonomous delivery drone, released in March 2024.\nIt carries a 5 kg payload with a 32 km operating range. The fleet of 1,200 units serves 14 cities.\n\n## Bill of materials highlights\n\n- Telemetry radio: SkyLink X2 module (firmware line 2.x) built by BlueFin Circuits.\n- Battery pack: four VoltCore 4000 lithium-ion cells manufactured by Helix Cell Works.\n- Final assembly plant: Fremont, CA.\n\n## Service notes\n\nMid-flight telemetry dropouts observed across the fleet in May 2024 were tracked under incident\nINC-1077 and resolved by a signed firmware upgrade. Battery warranty coverage follows policy WP-9.",
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n# Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\n- Reported: May 2024\n- Product: NimbusOne delivery drone (1,200 unit fleet, 14 cities)\n- Severity: major, no crashes\n\n## Root cause\n\nSkyLink X2 firmware 2.3.1 contained a watchdog reset defect that dropped the telemetry link under\nsustained airframe vibration. Average outage per flight was 17 minutes.\n\n## Remediation\n\n- Fleet-wide upgrade to signed firmware 2.3.2 completed June 2024.\n- The signed image satisfies security standard SEC-14; compliance audited quarterly by Marcus\n  Webb's firmware team.\n- Incident owned by Marcus Webb (Firmware Lead).",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9.",
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\nIncident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\nIncident INC-1077 reported May 2024 involved NimbusOne delivery drones (1,200 units across 14 cities) experiencing major telemetry dropouts due to a watchdog reset defect in SkyLink X2 firmware 2.3.1 under sustained vibration, causing average 17\u2011minute outages per flight. Remediation was a fleet\u2011wide upgrade to signed firmware 2.3.2 completed June 2024, meeting security standard SEC-14 with quarterly compliance audits. The incident was owned by Marcus Webb, Firmware Lead, whose team performed the audit and rollout."
+      ],
+      "response": "The NimbusOne fleet serves 14 cities, and final assembly is performed at the Fremont, CA plant. [1][3]",
+      "reference": "The 1,200-unit NimbusOne fleet serves 14 cities; final assembly happens at the Fremont, CA plant.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1339.4,
+        "graph_search": 217.8,
+        "rrf_fusion": 0.1,
+        "rerank": 67475.7,
+        "generate": 810.4
+      }
+    },
+    {
+      "user_input": "Which incident led to a formal supplier CAPA, and which supplier machining line was implicated?",
+      "retrieved_contexts": [
+        "Kestrel Metals\n# Kestrel Metals\n\nKestrel Metals is a CNC machining supplier based in Tucson, AZ. It machines AeroGrip actuator\nhousings for the AtlasArm and fabricates HaloDock enclosures.\n\n## Supplier facts\n\n- Quality contact: Rosa Delgado.\n- On-time delivery rate: 96%.\n- Machining lines: line 2 and line 4 (Tucson plant).\n\n## Quality history\n\nHousings from batch A-2231, produced on machining line 4 in August 2024, had improper\nthread-lock application. This caused AtlasArm actuator overheating tracked under incident\nINC-1042 and resulted in a formal supplier corrective action (CAPA) with quarterly audits by the\nNimbus quality team led by Priya Nair.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\n# Incident INC-1042: AtlasArm Actuator Overheating\n\n- Reported: September 2024\n- Product: AtlasArm industrial arm\n- Sites affected: two customer plants (45-unit installed base)\n- Severity: major\n\n## Root cause\n\nAeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in August 2024,\nreceived improper thread-lock application. Sustained load caused the housings to overheat.\n\n## Remediation\n\n- Replace all batch A-2231 housings in the field (completed November 2024).\n- Supplier corrective action (CAPA) opened with Kestrel Metals; quality contact Rosa Delgado.\n- Quarterly audits of Kestrel machining lines by Priya Nair's quality team.\n\nWarranty treatment followed policy WP-9: actuators carry 18 months of coverage.",
+        "Kestrel Metals\nKestrel Metals\n\nKestrel Metals, a CNC machining supplier in Tucson, AZ, produces AeroGrip actuator housings for AtlasArm and HaloDock enclosures. Key contacts include quality lead Rosa Delgado; on\u2011time delivery is 96%. Production uses machining lines 2 and 4, with batch A\u20112231 from line 4 (August 2024) suffering improper thread\u2011lock, causing AtlasArm actuator overheating and logged as incident INC\u20111042. The issue triggered a formal corrective action (CAPA) and quarterly audits by Nimbus quality team under lead Priya Nair.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\nIncident INC-1042: AtlasArm Actuator Overheating\n\nIncident INC-1042 (reported Sep 2024) involved major overheating of AtlasArm industrial arms at two customer plants (45 units). The root cause was AeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in Aug 2024, which received improper thread\u2011lock. Remediation included field replacement of all batch A-2231 housings (completed Nov 2024), a CAPA with supplier Kestrel Metals (quality contact Rosa Delgado), and quarterly audits of Kestrel lines by Priya Nair's quality team. Warranty was handled per policy WP-9, providing 18\u2011month coverage for actuators."
+      ],
+      "response": "The formal supplier CAPA was triggered by incident INC-1042, and it implicated machining line 4 at Kestrel Metals. [2][1]",
+      "reference": "INC-1042 led to a CAPA with Kestrel Metals after housings from batch A-2231 machined on Tucson line 4 had improper thread-lock.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1181.4,
+        "graph_search": 132.3,
+        "rrf_fusion": 0.1,
+        "rerank": 65487.2,
+        "generate": 1006.0
+      }
+    },
+    {
+      "user_input": "What is the operating temperature range of the cells used in NimbusOne battery packs?",
+      "retrieved_contexts": [
+        "VoltCore 4000 Battery Cell\n# VoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium-ion cell rated at 4000 mAh, manufactured exclusively\nby Helix Cell Works in Osaka, Japan.\n\n## Specifications\n\n- Cycle life: 800 cycles to 80% capacity.\n- Operating temperature: -20 to 60 degrees C.\n- Shipping class: UN3481 (lithium-ion contained in equipment).\n\n## Usage\n\nFour VoltCore 4000 cells form the NimbusOne drone battery pack. Battery warranty claims follow\npolicy WP-9 with 12 months of coverage. Failed cells are returned via supplier RMA handled by\nSupply Chain analyst Dana Kim; Helix Cell Works honors an RMA turnaround SLA of 21 days.",
+        "Helix Cell Works\n# Helix Cell Works\n\nHelix Cell Works is a battery cell manufacturer based in Osaka, Japan. It is the sole supplier\nof the VoltCore 4000 cell used in NimbusOne battery packs.\n\n## Supplier facts\n\n- Quality contact: Kenji Watanabe.\n- RMA turnaround SLA: 21 days.\n- Certification: ISO 9001:2015.\n\n## Escalation path\n\nBattery quality issues route through Priya Nair (Quality Lead) to the supplier's quality office.\nLogistics for failed-cell returns are coordinated by Dana Kim (Supply Chain Analyst).",
+        "NimbusOne Delivery Drone\n# NimbusOne Delivery Drone\n\nNimbusOne is Nimbus Robotics' flagship autonomous delivery drone, released in March 2024.\nIt carries a 5 kg payload with a 32 km operating range. The fleet of 1,200 units serves 14 cities.\n\n## Bill of materials highlights\n\n- Telemetry radio: SkyLink X2 module (firmware line 2.x) built by BlueFin Circuits.\n- Battery pack: four VoltCore 4000 lithium-ion cells manufactured by Helix Cell Works.\n- Final assembly plant: Fremont, CA.\n\n## Service notes\n\nMid-flight telemetry dropouts observed across the fleet in May 2024 were tracked under incident\nINC-1077 and resolved by a signed firmware upgrade. Battery warranty coverage follows policy WP-9.",
+        "VoltCore 4000 Battery Cell\nVoltCore 4000 Battery Cell\n\nThe VoltCore 4000 is a 21700-format lithium\u2011ion battery cell (4000\u202fmAh) produced by Helix Cell Works in Osaka, Japan. It offers 800 cycles to 80% capacity, operates from \u201320\u202f\u00b0C to 60\u202f\u00b0C, and ships under UN3481. Four cells are used in the NimbusOne drone battery pack. Warranty claims follow policy WP\u20119 with a 12\u2011month coverage period, and defective units are returned via an RMA managed by supply\u2011chain analyst Dana Kim; Helix Cell Works guarantees a 21\u2011day RMA turnaround SLA.",
+        "Helix Cell Works\nHelix Cell Works\n\nHelix Cell Works, a battery cell manufacturer in Osaka, Japan, is the exclusive supplier of the VoltCore 4000 cell for NimbusOne battery packs. Key contacts include quality lead Kenji Watanabe, escalation lead Priya Nair, and supply chain analyst Dana Kim. The supplier adheres to ISO 9001:2015 certification and offers a 21\u2011day RMA turnaround SLA. Quality issues are escalated through Priya Nair to the supplier's quality office, while logistics for failed\u2011cell returns are managed by Dana Kim.",
+        "NimbusOne Delivery Drone\nNimbusOne Delivery Drone\n\nNimbusOne, Nimbus Robotics' flagship autonomous delivery drone launched March 2024, transports 5\u202fkg over 32\u202fkm and operates a fleet of 1,200 units in 14 cities. Key components include the SkyLink X2 telemetry radio (firmware 2.x) from BlueFin Circuits and a battery pack of four VoltCore\u202f4000 lithium\u2011ion cells made by Helix Cell Works; final assembly occurs at the Fremont, CA plant. In May 2024 the fleet experienced mid\u2011flight telemetry dropouts logged as incident INC-1077, which was remedied by a signed firmware upgrade. Battery warranty is governed by policy WP-9."
+      ],
+      "response": "The cells operate from \u201320\u202f\u00b0C to 60\u202f\u00b0C. [1][4]",
+      "reference": "The VoltCore 4000 cells operate from -20 to 60 degrees C.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1746.5,
+        "graph_search": 220.3,
+        "rrf_fusion": 0.1,
+        "rerank": 66649.1,
+        "generate": 885.2
+      }
+    },
+    {
+      "user_input": "Who leads the team that audits compliance with SEC-14, and how often are audits performed?",
+      "retrieved_contexts": [
+        "Standard SEC-14: Firmware Security\n# Standard SEC-14: Firmware Security\n\nSEC-14 requires that all field-deployed radios and controllers run cryptographically signed\nfirmware. Unsigned images and rollbacks below the signed baseline are prohibited.\n\n## Scope\n\n- SkyLink X2 telemetry radio line (NimbusOne, HaloDock links).\n- HaloDock dock controllers.\n\n## Compliance\n\nFirmware releases such as SkyLink X2 2.3.2 ship signed images and satisfy SEC-14. Compliance is\naudited quarterly by Marcus Webb's firmware team.",
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n# Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\n- Reported: May 2024\n- Product: NimbusOne delivery drone (1,200 unit fleet, 14 cities)\n- Severity: major, no crashes\n\n## Root cause\n\nSkyLink X2 firmware 2.3.1 contained a watchdog reset defect that dropped the telemetry link under\nsustained airframe vibration. Average outage per flight was 17 minutes.\n\n## Remediation\n\n- Fleet-wide upgrade to signed firmware 2.3.2 completed June 2024.\n- The signed image satisfies security standard SEC-14; compliance audited quarterly by Marcus\n  Webb's firmware team.\n- Incident owned by Marcus Webb (Firmware Lead).",
+        "Team Directory\n# Team Directory\n\nNimbus Robotics headquarters: Fremont, CA. Operations hubs: Austin, TX and Rotterdam, NL.\n\n- Priya Nair - Quality Lead. Owns supplier quality, CAPAs and audits (e.g., Kestrel Metals).\n- Marcus Webb - Firmware Lead. Owns firmware incidents (INC-1077) and SEC-14 compliance audits.\n- Lena Ortiz - Field Service Manager. Coordinates field rollouts (INC-1090 retrofit).\n- Dana Kim - Supply Chain Analyst. Issues supplier RMAs under policy WP-9.",
+        "Standard SEC-14: Firmware Security\nStandard SEC-14: Firmware Security\n\nSEC-14 Firmware Security mandates cryptographically signed firmware for all field\u2011deployed radios and controllers, prohibiting unsigned images and rollbacks below the signed baseline. Scope covers the SkyLink X2 telemetry radio line (including NimbusOne and HaloDock links) and HaloDock dock controllers. The SkyLink X2 2.3.2 firmware release provides signed images that meet SEC\u201114. Quarterly compliance audits are performed by Marcus Webb\u2019s firmware team.",
+        "Team Directory\nTeam Directory\n\nNimbus Robotics, headquartered in Fremont, CA with hubs in Austin, TX and Rotterdam, NL, lists key staff: Priya Nair (Quality Lead) manages supplier quality, CAPAs and audits for vendors such as Kestrel Metals; Marcus Webb (Firmware Lead) handles firmware incidents (e.g., INC-1077) and SEC-14 compliance audits; Lena Ortiz (Field Service Manager) oversees field rollouts including retrofit incident INC-1090; Dana Kim (Supply Chain Analyst) processes supplier RMAs under policy WP-9.",
+        "Incident INC-1077: NimbusOne Fleet Telemetry Dropouts\nIncident INC-1077: NimbusOne Fleet Telemetry Dropouts\n\nIncident INC-1077 reported May 2024 involved NimbusOne delivery drones (1,200 units across 14 cities) experiencing major telemetry dropouts due to a watchdog reset defect in SkyLink X2 firmware 2.3.1 under sustained vibration, causing average 17\u2011minute outages per flight. Remediation was a fleet\u2011wide upgrade to signed firmware 2.3.2 completed June 2024, meeting security standard SEC-14 with quarterly compliance audits. The incident was owned by Marcus Webb, Firmware Lead, whose team performed the audit and rollout."
+      ],
+      "response": "Marcus Webb leads the team that audits compliance with SEC-14, and the audits are performed quarterly. [1][4]",
+      "reference": "Marcus Webb's firmware team audits SEC-14 signed-firmware compliance quarterly.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1201.5,
+        "graph_search": 149.7,
+        "rrf_fusion": 0.1,
+        "rerank": 66705.4,
+        "generate": 758.0
+      }
+    },
+    {
+      "user_input": "An AtlasArm plant reports actuator faults 20 months after purchase - is the repair covered under warranty?",
+      "retrieved_contexts": [
+        "AtlasArm Industrial Robotic Arm\n# AtlasArm Industrial Robotic Arm\n\nAtlasArm is a six-axis industrial robotic arm released in September 2023 with a 12 kg payload.\nThe installed base is 380 units across 45 customer plants.\n\n## Bill of materials highlights\n\n- Actuators: AeroGrip actuator assemblies; housings are CNC-machined by Kestrel Metals.\n- Controller PCB: supplied by BlueFin Circuits.\n\n## Service notes\n\nSustained-load overheating on two plants in September 2024 was tracked under incident INC-1042\nand traced to a machining defect on AeroGrip housings. Actuator warranty coverage follows policy\nWP-9 (18 months for actuators).",
+        "Policy WP-9: Warranty Terms\n# Policy WP-9: Warranty Terms\n\nStandard warranty coverage for Nimbus Robotics products:\n\n- Products (NimbusOne, AtlasArm, HaloDock): 24 months from purchase.\n- Batteries and cells, including VoltCore 4000: 12 months.\n- Actuators, including AeroGrip: 18 months.\n\n## Claims process\n\n1. Field engineer logs a warranty case with a diagnostic bundle attached.\n2. Supply Chain analyst Dana Kim issues the supplier RMA:\n   - Helix Cell Works RMA turnaround SLA: 21 days.\n   - Kestrel Metals RMA turnaround SLA: 14 days.\n3. Out-of-warranty units qualify for the replacement program at a 15% discount.\n\nBatteries ship under UN3481 Class 9 labeling requirements.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\n# Incident INC-1042: AtlasArm Actuator Overheating\n\n- Reported: September 2024\n- Product: AtlasArm industrial arm\n- Sites affected: two customer plants (45-unit installed base)\n- Severity: major\n\n## Root cause\n\nAeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in August 2024,\nreceived improper thread-lock application. Sustained load caused the housings to overheat.\n\n## Remediation\n\n- Replace all batch A-2231 housings in the field (completed November 2024).\n- Supplier corrective action (CAPA) opened with Kestrel Metals; quality contact Rosa Delgado.\n- Quarterly audits of Kestrel machining lines by Priya Nair's quality team.\n\nWarranty treatment followed policy WP-9: actuators carry 18 months of coverage.",
+        "AtlasArm Industrial Robotic Arm\nAtlasArm Industrial Robotic Arm\n\nAtlasArm is a six-axis industrial robotic arm launched Sep 2023 with a 12\u202fkg payload; 380 units are deployed across 45 customer plants. Key components include AeroGrip actuator assemblies (housing CNC\u2011machined by Kestrel Metals) and a controller PCB supplied by BlueFin Circuits. In Sep 2024, sustained\u2011load overheating occurred at two plants (incident INC-1042) and was traced to a machining defect in the AeroGrip housings. Actuator warranty is governed by policy WP\u20119, providing 18\u2011month coverage.",
+        "Policy WP-9: Warranty Terms\nPolicy WP-9: Warranty Terms\n\nPolicy WP-9 defines warranty terms for Nimbus Robotics products: NimbusOne, AtlasArm, and HaloDock receive 24\u2011month coverage; batteries and cells, including the VoltCore 4000, receive 12 months; actuators, such as AeroGrip, receive 18 months. Claims are logged by a field engineer and processed by supply\u2011chain analyst Dana Kim, who issues supplier RMAs with turnaround SLAs of 21 days for Helix Cell Works and 14 days for Kestrel Metals. Out\u2011of\u2011warranty units may be replaced at a 15% discount. Battery shipments must comply with UN3481 Class\u202f9 labeling requirements.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\nIncident INC-1042: AtlasArm Actuator Overheating\n\nIncident INC-1042 (reported Sep 2024) involved major overheating of AtlasArm industrial arms at two customer plants (45 units). The root cause was AeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in Aug 2024, which received improper thread\u2011lock. Remediation included field replacement of all batch A-2231 housings (completed Nov 2024), a CAPA with supplier Kestrel Metals (quality contact Rosa Delgado), and quarterly audits of Kestrel lines by Priya Nair's quality team. Warranty was handled per policy WP-9, providing 18\u2011month coverage for actuators."
+      ],
+      "response": "No, the repair is not covered under warranty because actuator warranty under policy WP\u20119 is limited to 18 months, and the fault occurred 20 months after purchase.",
+      "reference": "No. WP-9 gives actuators including AeroGrip 18 months of coverage, so a 20-month-old unit is out of warranty but eligible for the 15% discount replacement program.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1226.6,
+        "graph_search": 112.4,
+        "rrf_fusion": 0.1,
+        "rerank": 59170.3,
+        "generate": 888.8
+      }
+    },
+    {
+      "user_input": "Which supplier builds AtlasArm controller PCBs, and what other supplied part caused a field incident?",
+      "retrieved_contexts": [
+        "AtlasArm Industrial Robotic Arm\n# AtlasArm Industrial Robotic Arm\n\nAtlasArm is a six-axis industrial robotic arm released in September 2023 with a 12 kg payload.\nThe installed base is 380 units across 45 customer plants.\n\n## Bill of materials highlights\n\n- Actuators: AeroGrip actuator assemblies; housings are CNC-machined by Kestrel Metals.\n- Controller PCB: supplied by BlueFin Circuits.\n\n## Service notes\n\nSustained-load overheating on two plants in September 2024 was tracked under incident INC-1042\nand traced to a machining defect on AeroGrip housings. Actuator warranty coverage follows policy\nWP-9 (18 months for actuators).",
+        "BlueFin Circuits\n# BlueFin Circuits\n\nBlueFin Circuits is an electronics manufacturer supplying printed circuit boards and\nelectromechanical parts to Nimbus Robotics.\n\n## Supplied parts\n\n- SkyLink X2 radio module (complete module build) for NimbusOne and HaloDock.\n- AtlasArm controller PCB.\n- HaloDock power relay, 20 A, revision A.\n\n## Quality history\n\nThe revision-A 20 A relay is undersized for full 900 W simultaneous dock loads; breakers tripped\nat three depots in February 2025 under incident INC-1090. A 30 A revision-B relay is scheduled as\nthe permanent fix. The SkyLink X2 firmware 2.3.1 watchdog defect (incident INC-1077) was also on\nBlueFin-built hardware and fixed in signed firmware 2.3.2.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\n# Incident INC-1042: AtlasArm Actuator Overheating\n\n- Reported: September 2024\n- Product: AtlasArm industrial arm\n- Sites affected: two customer plants (45-unit installed base)\n- Severity: major\n\n## Root cause\n\nAeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in August 2024,\nreceived improper thread-lock application. Sustained load caused the housings to overheat.\n\n## Remediation\n\n- Replace all batch A-2231 housings in the field (completed November 2024).\n- Supplier corrective action (CAPA) opened with Kestrel Metals; quality contact Rosa Delgado.\n- Quarterly audits of Kestrel machining lines by Priya Nair's quality team.\n\nWarranty treatment followed policy WP-9: actuators carry 18 months of coverage.",
+        "AtlasArm Industrial Robotic Arm\nAtlasArm Industrial Robotic Arm\n\nAtlasArm is a six-axis industrial robotic arm launched Sep 2023 with a 12\u202fkg payload; 380 units are deployed across 45 customer plants. Key components include AeroGrip actuator assemblies (housing CNC\u2011machined by Kestrel Metals) and a controller PCB supplied by BlueFin Circuits. In Sep 2024, sustained\u2011load overheating occurred at two plants (incident INC-1042) and was traced to a machining defect in the AeroGrip housings. Actuator warranty is governed by policy WP\u20119, providing 18\u2011month coverage.",
+        "BlueFin Circuits\nBlueFin Circuits\n\nBlueFin Circuits, an electronics manufacturer, supplies printed circuit boards and electromechanical parts to Nimbus Robotics, including the SkyLink X2 radio module (used in NimbusOne and HaloDock), the AtlasArm controller PCB, and a 20\u202fA revision\u2011A HaloDock power relay. The revision\u2011A relay was undersized for 900\u202fW dock loads, causing breaker trips at three depots in February\u202f2025 (incident INC\u20111090); a 30\u202fA revision\u2011B relay is slated as the permanent fix. The SkyLink X2 firmware 2.3.1 had a watchdog defect (incident INC\u20111077) on BlueFin\u2011built hardware, corrected with signed firmware 2.3.2.",
+        "Incident INC-1042: AtlasArm Actuator Overheating\nIncident INC-1042: AtlasArm Actuator Overheating\n\nIncident INC-1042 (reported Sep 2024) involved major overheating of AtlasArm industrial arms at two customer plants (45 units). The root cause was AeroGrip actuator housings from batch A-2231, machined on Kestrel Metals line 4 in Aug 2024, which received improper thread\u2011lock. Remediation included field replacement of all batch A-2231 housings (completed Nov 2024), a CAPA with supplier Kestrel Metals (quality contact Rosa Delgado), and quarterly audits of Kestrel lines by Priya Nair's quality team. Warranty was handled per policy WP-9, providing 18\u2011month coverage for actuators."
+      ],
+      "response": "BlueFin Circuits builds the AtlasArm controller PCBs, and its 20\u202fA revision\u2011A HaloDock power relay caused a field incident (breaker trips at three depots, incident INC\u20111090) [2][5].",
+      "reference": "BlueFin Circuits supplies the AtlasArm controller PCB; its revision-A 20 A HaloDock relay caused breaker trips in incident INC-1090.",
+      "used_web": false,
+      "iterations": 0,
+      "stop_reason": "generated_fastpath",
+      "stage_ms": {
+        "vector_search": 1334.4,
+        "graph_search": 179.0,
+        "rrf_fusion": 0.1,
+        "rerank": 67239.4,
+        "generate": 871.2
+      }
+    }
+  ],
+  "ragas": {
+    "faithfulness": 0.8267,
+    "answer_relevancy": 0.6464,
+    "context_precision": 0.8754,
+    "context_recall": 1.0
+  },
+  "web_fallback_rate": 0.0,
+  "judge_model": "openai/gpt-oss-20b"
+}
