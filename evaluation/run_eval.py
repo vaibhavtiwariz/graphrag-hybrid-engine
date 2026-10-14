@@ -135,10 +135,25 @@ def default_report_path(mode: str) -> Path:
 @click.command()
 @click.option("--dataset", "datasets", multiple=True, default=("evaluation/golden_multi_hop.jsonl",))
 @click.option("--limit", default=None, type=int)
-@click.option("--out", default=None, help="Explicit report path (default: evaluation/results/full_eval_<mode>_<yyyymmdd_hhmm>.json)")
-@click.option("--baseline", is_flag=True, default=False, help="Vector-only baseline: dense ANN retrieval, single retrieve+generate pass")
+@click.option(
+    "--out",
+    default=None,
+    help="Explicit report path (default: evaluation/results/full_eval_<mode>_<yyyymmdd_hhmm>.json)",
+)
+@click.option(
+    "--baseline",
+    is_flag=True,
+    default=False,
+    help="Vector-only baseline: dense ANN retrieval, single retrieve+generate pass",
+)
 @click.option("--deepeval", is_flag=True, default=False, help="Also run DeepEval G-Eval correctness")
-def main(datasets: tuple[str, ...], limit: int | None, out: str | None, baseline: bool, deepeval: bool) -> None:
+def main(
+    datasets: tuple[str, ...],
+    limit: int | None,
+    out: str | None,
+    baseline: bool,
+    deepeval: bool,
+) -> None:
     mode = "vector-only" if baseline else "hybrid"
     if baseline:
         # Must happen before ANY app.* import so the baseline guard in
